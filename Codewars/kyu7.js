@@ -37,3 +37,20 @@ function openOrSeniorReadabilitty(data) {
 function friend(friends) {
   return friends.filter((name) => name.length == 4);
 }
+
+// ## Problem: Regex validate PIN code ##
+
+// ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but exactly 4 digits or exactly 6 digits.
+// If the function is passed a valid PIN string, return true, else return false.
+
+// ## Solution ##
+
+function validatePIN(pin) {
+  //return true or false
+  // verify that all are numberic values (integers)
+  // verify that the total digits are either 4 or 6
+  if (pin.length == 4 || pin.length == 6) {
+    return /^\d+$/.test(pin);
+  }
+  return false;
+}
