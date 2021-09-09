@@ -21,3 +21,24 @@ function pigIt(str) {
     })
     .join(" ");
 }
+
+// ## Problem: Moving Zeros To The End ##
+
+// Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
+
+// ## Solution ##
+
+var moveZeros = function (arr) {
+  // To check where to start putting the zeros
+  let zeroPointer = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== 0) {
+      arr[zeroPointer] = arr[i];
+      zeroPointer++;
+    }
+  }
+  for (let i = zeroPointer; i < arr.length; i++) {
+    arr[i] = 0;
+  }
+  return arr;
+};
