@@ -20,3 +20,30 @@ function createPhoneNumber(numbers) {
     .slice(3, 6)
     .join("")}-${numbers.slice(6).join("")}`;
 }
+
+// ## Problem: Bouncing Balls ##
+// A child is playing with a ball on the nth floor of a tall building. The height of this floor, h, is known.
+// He drops the ball out of the window. The ball bounces (for example), to two-thirds of its height (a bounce of 0.66).
+// His mother looks out of a window 1.5 meters from the ground.
+// How many times will the mother see the ball pass in front of her window (including when it's falling and bouncing?
+// Three conditions must be met for a valid experiment:
+// # Float parameter "h" in meters must be greater than 0
+// # Float parameter "bounce" must be greater than 0 and less than 1
+// # Float parameter "window" must be less than h.
+// Note: The ball can only be seen if the height of the rebounding ball is strictly greater than the window parameter.
+
+// ## Solution ##
+
+function bouncingBall(h, bounce, window) {
+  if (h <= 0 || bounce <= 0 || bounce >= 1 || window >= h) return -1;
+  let observations = 1;
+  let lastHeight = h * bounce;
+  let bounceHeight = lastHeight;
+
+  while (bounceHeight > window) {
+    observations = observations + 2;
+    bounceHeight = bounceHeight * bounce;
+  }
+
+  return observations;
+}
