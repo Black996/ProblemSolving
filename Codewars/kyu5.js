@@ -78,3 +78,38 @@ function rgb(r, g, b) {
 
   return `${r}${g}${b}`;
 }
+
+// ## Problem: Directions Reduction ##
+// Write a function dirReduc which will take an array of strings and returns an array of strings
+// with the needless directions removed (W<->E or S<->N side by side).
+
+// Solution
+
+function dirReduc(arr) {
+  let redo = false;
+  let i = 0;
+  while (i < arr.length - 1) {
+    if (
+      (arr[i] == "WEST" && arr[i + 1] == "EAST") ||
+      (arr[i + 1] == "WEST" && arr[i] == "EAST")
+    ) {
+      arr.splice(i, 2);
+      redo = true;
+    } else if (
+      (arr[i] == "NORTH" && arr[i + 1] == "SOUTH") ||
+      (arr[i + 1] == "NORTH" && arr[i] == "SOUTH")
+    ) {
+      arr.splice(i, 2);
+      redo = true;
+    }
+    if (redo) {
+      i = 0;
+      redo = false;
+    } else {
+      i++;
+    }
+  }
+  return arr;
+}
+
+// dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]);
