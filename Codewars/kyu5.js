@@ -83,7 +83,7 @@ function rgb(r, g, b) {
 // Write a function dirReduc which will take an array of strings and returns an array of strings
 // with the needless directions removed (W<->E or S<->N side by side).
 
-// Solution
+// ## Solution ##
 
 function dirReduc(arr) {
   let redo = false;
@@ -113,3 +113,30 @@ function dirReduc(arr) {
 }
 
 // dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]);
+
+// ## Problem: Scramblies ##
+
+// Complete the function scramble(str1, str2) that returns true if a portion of str1 characters can be
+// rearranged to match str2, otherwise returns false.
+
+// ## Solution ##
+
+function scramble(str1, str2) {
+  //code me
+  let str1CharsCounter = {};
+  let str2CharsCounter = {};
+
+  for (let char of str1) {
+    str1CharsCounter[char] = (str1CharsCounter[char] || 0) + 1;
+  }
+  for (let char of str2) {
+    str2CharsCounter[char] = (str2CharsCounter[char] || 0) + 1;
+  }
+
+  for (let char in str2CharsCounter) {
+    console.log(`char2: ${char}, char 2: ${str1CharsCounter[char]}`);
+    if (!str1CharsCounter[char]) return false;
+    if (str1CharsCounter[char] < str2CharsCounter[char]) return false;
+  }
+  return true;
+}
