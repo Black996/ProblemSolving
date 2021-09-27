@@ -140,3 +140,22 @@ function scramble(str1, str2) {
   }
   return true;
 }
+
+// ## Problem: The Hashtag Generator ##
+
+//The marketing team is spending way too much time typing in hashtags.
+// Let's help them with our own Hashtag Generator!
+
+// ## Solution ##
+
+function generateHashtag(str) {
+  let strArr = str.split(" ").map((word) => {
+    if (word.length == 0) return word;
+    else return word[0].toUpperCase() + word.slice(1);
+  });
+
+  let readyStr = "#" + strArr.join("");
+
+  if (readyStr.length == 1 || readyStr.length > 140) return false;
+  return readyStr;
+}
